@@ -28,7 +28,7 @@ export const executeCurrency = async (
   targetCurrency: string,
 ) => {
   const comparison = await getCurrencyComparison(localCurrency, targetCurrency);
-  console.log(comparison);
+  //console.log(comparison);
   showCurrencyComparison(comparison);
 };
 
