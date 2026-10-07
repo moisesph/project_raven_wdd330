@@ -9,6 +9,14 @@ const getPersonalExcel = async () => {
   return data;
 };
 
+const showExcel = (info: string) => {
+  const currencyInfo = document.getElementById("personal-excel");
+  currencyInfo!.innerHTML = `<p>${info}</p>`;
+};
 
+export const executePersonalExcel = async () => {
+  const data = await getPersonalExcel();
+  showExcel(data);
+};
 
-getPersonalExcel();
+executePersonalExcel();
