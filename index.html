@@ -6,31 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>project_raven_wdd330</title>
 
-    <script
-      src="/src/ts/conversionCurrency/currencyComparison.ts"
-      type="module"
-    ></script>
-    <script
-      src="/src/ts/conversionCurrency/localCurrency.ts"
-      type="module"
-    ></script>
+    <link rel="stylesheet" href="/src/css/style.scss" />
 
-    <script src="/src/ts/personalExcel/showExcel.ts" type="module"></script>
+    <script src="/src/ts/main.ts" type="module"></script>
   </head>
   <body>
     <load src="public/partials/header.html" />
+    <main>
+      <div>
+        <button id="btn-create">Create Excel</button>
+        <button id="btn-import">Import Excel</button>
+      </div>
 
-    <div id="app"></div>
+      <div id="app"></div>
 
-    <div id="currency-info"></div>
+      <div id="currency-info"></div>
 
-    <div>
-      <button id="btn-create">Create Excel</button>
-      <button id="btn-import">Import Excel</button>
-    </div>
+      <div id="personal-excel"></div>
 
-    <div id="personal-excel"></div>
-
+      <div id="calculator"></div>
+    </main>
     <load src="public/partials/footer.html" />
   </body>
 </html>

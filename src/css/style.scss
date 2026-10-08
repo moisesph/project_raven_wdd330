@@ -1,0 +1,41 @@
+@use "bootstrap/scss/bootstrap";
+
+body {
+  @extend .d-flex, .flex-column, .min-vh-100, .bg-body-tertiary, .text-body;
+}
+
+header {
+  @extend .bg-white,
+    .shadow-sm,
+    .py-3,
+    .px-4,
+    .d-flex,
+    .justify-content-between,
+    .align-items-center;
+}
+
+main {
+  @extend .container, .my-4, .text-center;
+}
+
+table {
+  @extend .table,
+    .table-striped,
+    .table-hover,
+    .table-bordered,
+    .table-responsive;
+}
+
+button {
+  @extend .btn,
+    .btn-primary,
+    .btn-secondary,
+    .btn-success,
+    .btn-danger,
+    .btn-warning,
+    .btn-lg;
+}
+
+footer {
+  @extend .mt-auto, .bg-dark, .text-white, .py-3, .text-center;
+}

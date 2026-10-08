@@ -32,4 +32,3 @@ export const executeCurrency = async (
   showCurrencyComparison(comparison);
 };
 
-executeCurrency("USD", "EUR");
