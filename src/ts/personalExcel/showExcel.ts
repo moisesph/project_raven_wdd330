@@ -1,5 +1,4 @@
 import { link } from "./data.js";
-
 //console.log(link);
 
 const getPersonalExcel = async () => {
@@ -34,10 +33,25 @@ const dataOrganize = async () => {
     console.table(info);
     const [header = [], ...rows] = info;
 
-    const htmlHeader = header.map((column) => `<th>${column}</th>`).join("");
+    const htmlHeader = header
+      .map((column, index) => {
+        const colLetter = String.fromCharCode(65 + index);
+        const rowNumber = 1;
+        const cellId = `${colLetter}${rowNumber}`;
+        return `<th id="${cellId}">${column}</th>`;
+      })
+      .join("");
     const htmlRows = rows
       .map(
-        (row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`,
+        (row, rowIndex) =>
+          `<tr >${row
+            .map((cell, colIndex) => {
+              const colLetter = String.fromCharCode(65 + colIndex);
+              const rowNumber = rowIndex + 2;
+              const cellId = `${colLetter}${rowNumber}`;
+              return `<td id="${cellId}" >${cell}</td>`;
+            })
+            .join("")}</tr>`,
       )
       .join("");
 
@@ -58,8 +72,6 @@ const showExcel = async () => {
   }
 };
 
-export const executePersonalExcel = () => {
-  showExcel();
+export const executePersonalExcel = async () => {
+  await showExcel();
 };
-
-
