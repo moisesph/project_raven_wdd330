@@ -17,7 +17,7 @@ const templateSigns = () => {
 };
 
 const templateInput = () => {
-  const input = document.getElementById("calculator-input");
+  const input = document.getElementById("calculator");
   const box = document.createElement("input");
 
   box.type = "number";
@@ -29,6 +29,6 @@ const templateInput = () => {
 };
 
 export const initCalculator = () => {
-  templateSigns();
   templateInput();
+  templateSigns();
 };
