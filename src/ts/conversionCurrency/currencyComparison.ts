@@ -38,7 +38,7 @@ const showCurrencyComparison = async (data: information[]) => {
     .join("");
   const currencyInfo = document.getElementById("currency-info");
 
-  currencyInfo!.innerHTML = `${localCurrency} > <select><option value="" disabled selected>Select</option>${currenciesData}</select>`;
+  currencyInfo!.innerHTML = `${localCurrency} > <select><option value="" disabled selected>Select</option>${currenciesData}</select> = ${rate}`;
 };
 
 export const executeCurrency = async (
