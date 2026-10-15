@@ -4,7 +4,7 @@ import { executePersonalExcel } from "./personalExcel/showExcel.js";
 import { initCalculator } from "./calculator/ui.js";
 import { initModify } from "./personalExcel/modify.js";
 
-executeCurrency("USD", "EUR");
+executeCurrency("USD");
 getLocalCurrency();
 await executePersonalExcel();
 initCalculator();

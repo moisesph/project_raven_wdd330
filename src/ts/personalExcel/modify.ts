@@ -1,5 +1,3 @@
-import { initCalculator } from "../calculator/logic.js";
-
 const createCell = () => {
   let selectedCell: { cellId: string; cellValue: string } | null = null;
   return {
@@ -9,6 +7,18 @@ const createCell = () => {
     },
     get: () => {
       return selectedCell;
+    },
+  };
+};
+
+const createOperator = () => {
+  let selectedButton: { symbol: string } | null = null;
+  return {
+    remember: (buttonValue: string) => {
+      return buttonValue;
+    },
+    get: () => {
+      return selectedButton;
     },
   };
 };
@@ -31,51 +41,26 @@ const selectCell = (cellManager: ReturnType<typeof createCell>) => {
   });
 };
 
-const createOperator = () => {
-  let selectedButton: { symbol: string } | null = null;
-  return {
-    remember: (buttonValue: string) => {
-      return buttonValue;
-    },
-    get: () => {
-      return selectedButton;
-    },
-  };
-};
-
 const selectButton = (operator: string) => {
   const calculator = document.querySelector("calculator");
-  const entry = document.querySelector("entryCalculator");
+  const entryCalculator = document.querySelector("entryCalculator");
 
   calculator?.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
     const button = target.closest("button");
-    const entry = target.closest("input");
 
-    if (!button || !entry) {
+    if (!button) {
       return;
     }
-    if (button) {
-      const cellId = button.id;
-      const cellValue = button.textContent;
-     
-    }
-    else{
 
-    }
-
-    
-
-    //console.log(cellManager.get());
-    //console.log(`Cell ID: ${cellId}, Cell Value: ${cellValue}`);
+    const buttonValue = button.textContent;
   });
 };
-
-const entryButton = () => {};
 
 export const initModify = () => {
   const cellManager = createCell();
   const operatorManager = createOperator();
 
   selectCell(cellManager);
+  //selectButton(operatorManager);
 };
