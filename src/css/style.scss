@@ -45,8 +45,52 @@ button {
     .btn-danger,
     .btn-warning,
     .btn-lg;
+
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.15);
+  }
 }
 
 footer {
   @extend .mt-auto, .bg-dark, .text-white, .py-3, .text-center;
+}
+
+@keyframes rainbow {
+  0% {
+    background-color: #ff0000;
+  }
+  17% {
+    background-color: #ff7f00;
+  }
+  33% {
+    background-color: #ffff00;
+  }
+  50% {
+    background-color: #00ff00;
+  }
+  67% {
+    background-color: #0000ff;
+  }
+  83% {
+    background-color: #4b0082;
+  }
+  100% {
+    background-color: #8b00ff;
+  }
+}
+
+td {
+  &:hover {
+    animation: rainbow 1.5s linear infinite;
+  }
+}
+
+th {
+  transition: transform 0.6 ease;
+  transform-style: preserve-3d;
+
+  &:hover {
+    transform: rotateY(180deg);
+  }
 }

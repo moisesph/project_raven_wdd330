@@ -3,7 +3,12 @@ import { link } from "./data.js";
 
 const getPersonalExcel = async () => {
   try {
-    const localCurrency = await fetch(link);
+    const localLink = localStorage.getItem("linkExcel");
+    if (!localLink || localLink.trim() === "") {
+      console.error("No link yet");
+      return null;
+    }
+    const localCurrency = await fetch(localLink);
     const data = await localCurrency.text();
     //console.log(data);
     return data;
@@ -16,6 +21,7 @@ const getPersonalExcel = async () => {
 const dataConvert = async () => {
   try {
     const data = await getPersonalExcel();
+    if (!data) return [];
     const dataConverted = data
       .trim()
       .split(/\r?\n/)
@@ -62,6 +68,28 @@ const dataOrganize = async () => {
   }
 };
 
+//I used IA to help me  with this function, it was too difficult to know how to do it
+const calculateTotal = (data: string[][]): number => {
+  let total = 0;
+  data.forEach((row) => {
+    row.forEach((cell) => {
+      const num = Number(cell.trim());
+      if (!isNaN(num) && cell.trim() !== "") {
+        total += num;
+      }
+    });
+  });
+  return total;
+};
+//I used IA to help me to show this
+const showTotal = (info: string[][]) => {
+  const total = calculateTotal(info);
+  const currentInfo = document.getElementById("excel-converted");
+  if (currentInfo) {
+    currentInfo.textContent = `Total in Dollars: $${total.toFixed(2)}`;
+  }
+};
+
 const showExcel = async () => {
   try {
     const info = await dataOrganize();
@@ -73,5 +101,7 @@ const showExcel = async () => {
 };
 
 export const executePersonalExcel = async () => {
+  const info = await dataConvert();
   await showExcel();
+  await showTotal(info);
 };
